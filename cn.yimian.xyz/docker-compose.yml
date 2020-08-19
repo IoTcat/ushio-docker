@@ -21,7 +21,6 @@ services:
     depends_on:
       - oneindex
       - php-fpm
-      - frps
       - session
       - acg.watch-api
       - serverstatus
@@ -33,7 +32,6 @@ services:
     networks:
       - default
       - php_net
-      - frp_net
 
   dns:
     #image: strm/dnsmasq
@@ -164,7 +162,7 @@ services:
   ushio-win-server:
     #build: https://github.com/iotcat/ushio-win-server.git
     #image: iotcat/ushio-win-server
-    image: docker.yimian.xyz/ushio-win-server
+    image: docker.yimian.xyz/win-server
     container_name: ushio-win-server
     restart: always
   kms:
