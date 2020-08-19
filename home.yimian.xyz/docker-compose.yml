@@ -6,7 +6,8 @@ services:
 
 
   nginx:
-    image: iotcat/ushio-nginx
+    #image: iotcat/ushio-nginx
+    image: docker.yimian.xyz/nginx
     container_name: nginx
     restart: always
     ports:
@@ -14,12 +15,14 @@ services:
       - "443:443"
     volumes:
       - "/mnt/etc/home.yimian.xyz/nginx/:/etc/nginx/"
-      - "/mnt/:/mnt/"
+      - "/mnt/etc/:/mnt/etc/"
+      - "/mnt/var/ssl/:/mnt/config/ssl/"
       - "/var/log/nginx/:/var/log/nginx/"
       - "/home/:/home/"
     #network_mode: "host"
     #command: sh /ip.sh & nginx -g daemon off;
     depends_on:
+      - registry
       - php-fpm
       - v2ray
  
@@ -35,19 +38,25 @@ services:
 # --------------------------------------
   monitor:
     #build: https://github.com/iotcat/ushio-monitor.git
-    image: iotcat/ushio-monitor
+    #image: iotcat/ushio-monitor
+    image: docker.yimian.xyz/monitor
     container_name: monitor
     restart: always
     command: USER=home.yimian.xyz
     network_mode: "host"
+    depends_on:
+      - registry
 
   php-fpm:
+    #image: crunchgeek/php-fpm:7.3
+    image: docker.yimian.xyz/php-fpm
     container_name: php-fpm
-    image: crunchgeek/php-fpm:7.3
     restart: always
     volumes:
       - "/home/:/home/"
       - "/mnt/:/mnt/"
+    depends_on:
+      - registry
 
 # common apps
 # -------------------------------------
@@ -68,18 +77,21 @@ services:
     ports:
       - 5000:5000
     volumes:
-      - "/mnt/config/ssl/yimian.xyz:/certs"
+      - "/mnt/var/ssl/yimian.xyz:/certs"
       - "/var/docker:/var/lib/registry"
 
 
 
   v2ray:
-    image: v2ray/official
+    #image: v2ray/official
+    image: docker.yimian.xyz/v2ray
     container_name: v2ray
     restart: always
     volumes:
       - "/mnt/config/v2ray/config.json.china:/etc/v2ray/config.json"
       - "/var/log/v2ray/:/var/log/v2ray/"
+    depends_on:
+      - registry
 
 
 
