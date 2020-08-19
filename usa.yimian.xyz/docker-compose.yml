@@ -4,7 +4,8 @@ services:
 # system-level services
 #--------------------------------
   nginx:
-    image: iotcat/ushio-nginx
+    #image: iotcat/ushio-nginx
+    image: docker.yimian.xyz/nginx
     container_name: nginx
     restart: always
     ports:
@@ -12,12 +13,12 @@ services:
       - "443:443"
     volumes:
       - "/mnt/etc/usa.yimian.xyz/nginx/:/etc/nginx/"
-      - "/mnt/:/mnt/"
+      - "/mnt/etc/:/mnt/etc/"
+      - "/mnt/var/ssl/:/mnt/config/ssl/"
       - "/var/log/nginx/:/var/log/nginx/"
       - "/home/www/:/home/www/"
     #network_mode: "host"
     depends_on:
-      - oneindex
       - php-fpm
       - frps
       - ushio-proxy
@@ -27,12 +28,13 @@ services:
       - frp_net
 
   dns:
-    image: strm/dnsmasq
+    #image: strm/dnsmasq
+    image: docker.yimian.xyz/dnsmasq
     restart: always
     volumes:
-      - /mnt/config/dnsmasq/dnsmasq.conf:/etc/dnsmasq.conf
-      - /mnt/config/dnsmasq/dnsmasq.d/:/etc/dnsmasq.d/
-      - /mnt/config/dnsmasq/hosts.conf:/etc/hosts.conf
+      - /mnt/etc/common/dnsmasq/dnsmasq.conf:/etc/dnsmasq.conf
+      - /mnt/etc/common/dnsmasq/dnsmasq.d/:/etc/dnsmasq.d/
+      - /mnt/etc/common/dnsmasq/hosts.conf:/etc/hosts.conf
     ports:
       - "53:53/udp"
       - "53:53/tcp"
@@ -44,21 +46,14 @@ services:
 # Database
 #----------------------------------
   redis:
-    image: redis
+    #image: redis
+    image: docker.yimian.xyz/redis
     container_name: redis
     restart: always
     volumes:
-      - "/tmp/redis/data/:/data/"
+      - "/var/redis/data/:/data/"
     networks:
       - redis_net
-  mongo:
-    image: mongo
-    container_name: mongo
-    restart: always
-    volumes:
-      - "/var/mongo:/data/db"
-    networks:
-      - mongo_net
 
 
 # app-level services
@@ -77,7 +72,7 @@ services:
     container_name: frps
     restart: always
     volumes:
-      - "/mnt/config/frp/frps.ini:/etc/frp/frps.ini"
+      - "/mnt/etc/common/frp/frps.ini:/etc/frp/frps.ini"
     ports:
       - "4480:4480"
       - "4443:4443"
@@ -107,24 +102,11 @@ services:
 
 # common apps
 # -------------------------------------
-  oneindex:
-    image: iotcat/oneindex
-    container_name: oneindex
-    restart: always
-    volumes:
-      - "/mnt/config/oneindex/:/var/www/html/config/"
 
 
 
 # local apps
 # ---------------------------------------
-  kms:
-    #build: https://github.com/iotcat/kms-dockcer.git
-    image: iotcat/kms
-    container_name: kms
-    restart: always
-    ports:
-      - "1688:1688"
 
   v2ray:
     image: v2ray/official
@@ -150,10 +132,7 @@ networks:
 
   redis_net:
 
-  mongo_net:
-
   php_net:
 
   frp_net:
 
-  mqtt_net:
