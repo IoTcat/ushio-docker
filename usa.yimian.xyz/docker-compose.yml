@@ -59,8 +59,9 @@ services:
 # app-level services
 # --------------------------------------
   php-fpm:
+    #image: crunchgeek/php-fpm:7.3
+    image: docker.yimian.xyz/php-fpm
     container_name: php-fpm
-    image: crunchgeek/php-fpm:7.3
     restart: always
     volumes:
       - "/home/:/home/"
@@ -68,7 +69,8 @@ services:
     networks:
       - php_net
   frps:
-    image: snowdreamtech/frps
+    #image: snowdreamtech/frps
+    image: docker.yimian.xyz/frps
     container_name: frps
     restart: always
     volumes:
@@ -82,7 +84,8 @@ services:
       - frp_net
   monitor:
     #build: https://github.com/iotcat/ushio-monitor.git
-    image: iotcat/ushio-monitor
+    #image: iotcat/ushio-monitor
+    image: docker.yimian.xyz/monitor
     container_name: monitor
     restart: always
     command: USER=usa.yimian.xyz
@@ -90,7 +93,8 @@ services:
 
 
   redrange:
-    image: wordpress:latest
+    #image: wordpress:latest
+    image: docker.yimian.xyz/wordpress
     ports:
       - "8000:80"
     restart: always
@@ -109,7 +113,8 @@ services:
 # ---------------------------------------
 
   v2ray:
-    image: v2ray/official
+    #image: v2ray/official
+    image: docker.yimian.xyz/v2ray
     container_name: v2ray
     restart: always
     volumes:
@@ -118,7 +123,8 @@ services:
 
   ushio-proxy:
     #build: https://github.com/iotcat/ushio-proxy.git
-    image: iotcat/ushio-proxy
+    #image: iotcat/ushio-proxy
+    image: docker.yimian.xyz/proxy
     container_name: ushio-proxy
     restart: always
 
