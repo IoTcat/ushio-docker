@@ -58,6 +58,19 @@ services:
     depends_on:
       - registry
 
+
+
+  frpc:
+    #image: snowdreamtech/frpc
+    image: docker.yimian.xyz/frpc
+    container_name: frpc
+    restart: always
+    volumes:
+      - "/mnt/etc/common/frp/frpc.ini.home:/etc/frp/frpc.ini"
+    network_mode: "host"
+    depends_on:
+      - registry
+
 # common apps
 # -------------------------------------
 
