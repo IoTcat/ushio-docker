@@ -18,6 +18,8 @@ iptables -A INPUT -p tcp --dport 22 -j ACCEPT
 # dns
 iptables -A INPUT -p tcp --sport 53 -j ACCEPT
 iptables -A INPUT -p udp --sport 53 -j ACCEPT
+# for established service
+iptables -A INPUT -p tcp -m state --state RELATED,ESTABLISHED -j ACCEPT
 # icmp ping
 iptables -A INPUT -p icmp -j ACCEPT
 # dns lookup
