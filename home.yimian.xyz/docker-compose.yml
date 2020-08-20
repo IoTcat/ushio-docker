@@ -7,7 +7,7 @@ services:
 
   nginx:
     #image: iotcat/ushio-nginx
-    image: docker.yimian.xyz/nginx
+    image: docker.yimian.xyz:5000/nginx
     container_name: nginx
     restart: always
     ports:
@@ -39,7 +39,7 @@ services:
   monitor:
     #build: https://github.com/iotcat/ushio-monitor.git
     #image: iotcat/ushio-monitor
-    image: docker.yimian.xyz/monitor
+    image: docker.yimian.xyz:5000/monitor
     container_name: monitor
     restart: always
     command: USER=home.yimian.xyz
@@ -49,7 +49,7 @@ services:
 
   php-fpm:
     #image: crunchgeek/php-fpm:7.3
-    image: docker.yimian.xyz/php-fpm
+    image: docker.yimian.xyz:5000/php-fpm
     container_name: php-fpm
     restart: always
     volumes:
@@ -62,7 +62,7 @@ services:
 
   frpc:
     #image: snowdreamtech/frpc
-    image: docker.yimian.xyz/frpc
+    image: docker.yimian.xyz:5000/frpc
     container_name: frpc
     restart: always
     volumes:
@@ -81,7 +81,7 @@ services:
 # ---------------------------------------
   
   registry:
-    image: docker.yimian.xyz/registry
+    image: docker.yimian.xyz:5000/registry
     container_name: registry
     restart: always
     environment:
@@ -97,7 +97,7 @@ services:
 
   v2ray:
     #image: v2ray/official
-    image: docker.yimian.xyz/v2ray
+    image: docker.yimian.xyz:5000/v2ray
     container_name: v2ray
     restart: always
     volumes:
