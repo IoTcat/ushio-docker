@@ -1,6 +1,6 @@
 #!/bin/bash
 iptables -F
-iptables -P INPUT DROP
+iptables -P INPUT ACCEPT
 iptables -P OUTPUT ACCEPT
 iptables -P FORWARD ACCEPT
 # ssh
