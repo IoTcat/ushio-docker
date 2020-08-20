@@ -1,6 +1,6 @@
 #!/bin/bash
 iptables -F
-iptables -P INPUT ACCEPT
+iptables -P INPUT DROP
 iptables -P OUTPUT ACCEPT
 iptables -P FORWARD ACCEPT
 # ssh
@@ -18,6 +18,10 @@ iptables -A INPUT -p tcp --dport 22 -j ACCEPT
 # dns
 #iptables -A INPUT -p tcp --sport 53 -j ACCEPT
 #iptables -A INPUT -p udp --sport 53 -j ACCEPT
+# docker proxy
+iptables -A INPUT -s 114.116.85.132 -j ACCEPT
+iptables -A INPUT -s 127.0.0.1 -j ACCEPT
+iptables -A INPUT -s 80.251.216.25 -j ACCEPT
 # for established service
 iptables -A INPUT -p tcp -m state --state RELATED,ESTABLISHED -j ACCEPT
 iptables -A INPUT -p udp -m state --state RELATED,ESTABLISHED -j ACCEPT
