@@ -93,6 +93,21 @@ services:
       - "/mnt/var/ssl/yimian.xyz:/certs"
       - "/var/docker:/var/lib/registry"
 
+  gitea:
+    image: docker.yimian.xyz:5000/gitea
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+        #- HTTP_PORT=80
+      - SSH_PORT=4422
+    restart: always
+    volumes:
+      - /home/data/gitea:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "3000:3000"
+      - "222:22"
 
 
   v2ray:
@@ -113,4 +128,5 @@ services:
 # ------------------------------------
 networks:
   default:
+
 
