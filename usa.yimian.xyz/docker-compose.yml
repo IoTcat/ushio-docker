@@ -4,8 +4,8 @@ services:
 # system-level services
 #--------------------------------
   nginx:
-    image: iotcat/ushio-nginx
-    #image: docker.yimian.xyz/nginx
+    #image: iotcat/ushio-nginx
+    image: docker.yimian.xyz/nginx
     container_name: nginx
     restart: always
     ports:
@@ -84,8 +84,8 @@ services:
       - frp_net
   monitor:
     #build: https://github.com/iotcat/ushio-monitor.git
-    image: iotcat/ushio-monitor
-    #image: docker.yimian.xyz/monitor
+    #image: iotcat/ushio-monitor
+    image: docker.yimian.xyz/monitor
     container_name: monitor
     restart: always
     command: USER=usa.yimian.xyz
@@ -123,8 +123,8 @@ services:
 
   ushio-proxy:
     #build: https://github.com/iotcat/ushio-proxy.git
-    image: iotcat/ushio-proxy
-    #image: docker.yimian.xyz/proxy
+    #image: iotcat/ushio-proxy
+    image: docker.yimian.xyz/proxy
     container_name: ushio-proxy
     restart: always
 
