@@ -181,7 +181,7 @@ services:
     restart: always
     volumes:
       - "/mnt/config/token/huaweicloud/:/mnt/config/token/huaweicloud/"
-      - "/tmp/:/tmp/"
+      - "/tmp/:/tmp/bingImgUpdate/"
   danmaku-api:
     #build: https://github.com/iotcat/danmaku-api.git
     #image: iotcat/danmaku-api
