@@ -96,8 +96,8 @@ services:
   redrange:
     image: yangxuan8282/typecho
     #image: docker.yimian.xyz/wordpress
-    ports:
-      - "90:80"
+  # ports:
+ #    - "90:80"
     restart: always
     volumes:
       - "/home/www/redrange/:/var/www/html/"
