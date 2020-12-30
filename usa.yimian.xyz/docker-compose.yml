@@ -4,8 +4,8 @@ services:
 # system-level services
 #--------------------------------
   nginx:
-    #image: iotcat/ushio-nginx
-    image: docker.yimian.xyz/nginx
+    image: iotcat/ushio-nginx
+    #image: docker.yimian.xyz/nginx
     container_name: nginx
     restart: always
     ports:
@@ -84,8 +84,8 @@ services:
       - frp_net
   monitor:
     #build: https://github.com/iotcat/ushio-monitor.git
-    #image: iotcat/ushio-monitor
-    image: docker.yimian.xyz/monitor
+    image: iotcat/ushio-monitor
+    #image: docker.yimian.xyz/monitor
     container_name: monitor
     restart: always
     command: USER=usa.yimian.xyz
@@ -93,16 +93,13 @@ services:
 
 
   redrange:
-    image: wordpress:latest
+    image: yangxuan8282/typecho
     #image: docker.yimian.xyz/wordpress
     ports:
-      - "8000:80"
+      - "90:80"
     restart: always
-    environment:
-      WORDPRESS_DB_HOST: db.yimian.xyz:3306
-      WORDPRESS_DB_USER: redrange
-      WORDPRESS_DB_PASSWORD: redrange3@25
-      WORDPRESS_DB_NAME: redrange
+    volumes:
+      - "/home/www/redrange/:/var/www/html/"
 
 # common apps
 # -------------------------------------
@@ -133,8 +130,8 @@ services:
 
   ushio-proxy:
     #build: https://github.com/iotcat/ushio-proxy.git
-    #image: iotcat/ushio-proxy
-    image: docker.yimian.xyz/proxy
+    image: iotcat/ushio-proxy
+    #image: docker.yimian.xyz/proxy
     container_name: ushio-proxy
     restart: always
 
