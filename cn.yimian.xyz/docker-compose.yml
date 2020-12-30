@@ -165,14 +165,14 @@ services:
     image: docker.yimian.xyz/win-server
     container_name: ushio-win-server
     restart: always
-  kms:
+# kms:
     #build: https://github.com/iotcat/kms-dockcer.git
     #image: iotcat/kms
-    image: docker.yimian.xyz/kms
-    container_name: kms
-    restart: always
-    ports:
-      - "1688:1688"
+#   image: docker.yimian.xyz/kms
+#   container_name: kms
+#   restart: always
+#   ports:
+#     - "1688:1688"
   bingimgupdate-opt:
     #build: https://github.com/iotcat/bingUpdateImg-opt.git
     #image: iotcat/bingimgupdate-opt
