@@ -4,7 +4,8 @@ services:
 # system-level services
 #--------------------------------
   nginx:
-    image: iotcat/ushio-nginx
+    image: nginx
+    #image: iotcat/ushio-nginx
     #image: docker.yimian.xyz/nginx
     container_name: nginx
     restart: always
