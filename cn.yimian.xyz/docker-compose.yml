@@ -5,7 +5,7 @@ services:
 #--------------------------------
   nginx:
     #image: iotcat/ushio-nginx
-    image: docker.yimian.xyz/nginx
+    image: docker.yimian.xyz:4450/nginx
     container_name: nginx
     restart: always
     ports:
@@ -35,7 +35,7 @@ services:
 
   dns:
     #image: strm/dnsmasq
-    image: docker.yimian.xyz/dnsmasq
+    image: docker.yimian.xyz:4450/dnsmasq
     restart: always
     volumes:
       - /mnt/etc/common/dnsmasq/dnsmasq.conf:/etc/dnsmasq.conf
@@ -53,7 +53,7 @@ services:
 #----------------------------------
   redis:
     #image: redis
-    image: docker.yimian.xyz/redis
+    image: docker.yimian.xyz:4450/redis
     container_name: redis
     restart: always
     volumes:
@@ -64,7 +64,7 @@ services:
       - redis_net
   mongo:
     #image: mongo
-    image: docker.yimian.xyz/mongo
+    image: docker.yimian.xyz:4450/mongo
     container_name: mongo
     restart: always
     volumes:
@@ -77,7 +77,7 @@ services:
 # --------------------------------------
   php-fpm:
     #image: crunchgeek/php-fpm:7.3
-    image: docker.yimian.xyz/php-fpm
+    image: docker.yimian.xyz:4450/php-fpm
     container_name: php-fpm
     restart: always
     volumes:
@@ -90,7 +90,7 @@ services:
   monitor:
     #build: https://github.com/iotcat/ushio-monitor.git
     #image: iotcat/ushio-monitor
-    image: docker.yimian.xyz/monitor
+    image: docker.yimian.xyz:4450/monitor
     container_name: monitor
     restart: always
     command: USER=cn.yimian.xyz
@@ -100,7 +100,7 @@ services:
   ssl:
     #build: https://github.com/iotcat/ushio-ssl.git
     #image: iotcat/ushio-ssl
-    image: docker.yimian.xyz/ssl
+    image: docker.yimian.xyz:4450/ssl
     container_name: ssl
     restart: always
     #deploy:
@@ -114,7 +114,7 @@ services:
 # -------------------------------------
   oneindex:
     #image: iotcat/oneindex
-    image: docker.yimian.xyz/oneindex
+    image: docker.yimian.xyz:4450/oneindex
     container_name: oneindex
     restart: always
     volumes:
@@ -128,7 +128,7 @@ services:
   session:
     #build: https://github.com/iotcat/ushio-session.git
     #image: iotcat/ushio-session
-    image: docker.yimian.xyz/session
+    image: docker.yimian.xyz:4450/session
     container_name: session
     restart: always
     networks:
@@ -139,7 +139,7 @@ services:
   acg.watch-api:
     #build: https://github.com/iotcat/acg.watch-api.git
     #image: iotcat/acg.watch-api
-    image: docker.yimian.xyz/acg.watch-api
+    image: docker.yimian.xyz:4450/acg.watch-api
     container_name: acg.watch-api
     restart: always
     volumes:
@@ -152,7 +152,7 @@ services:
 # ---------------------------------------
   serverstatus:
     #image: iotcat/ushio-serverstatus
-    image: docker.yimian.xyz/serverstatus
+    image: docker.yimian.xyz:4450/serverstatus
     container_name: serverstatus
     restart: always
     volumes:
@@ -162,13 +162,13 @@ services:
   ushio-win-server:
     #build: https://github.com/iotcat/ushio-win-server.git
     #image: iotcat/ushio-win-server
-    image: docker.yimian.xyz/win-server
+    image: docker.yimian.xyz:4450/win-server
     container_name: ushio-win-server
     restart: always
 # kms:
     #build: https://github.com/iotcat/kms-dockcer.git
     #image: iotcat/kms
-#   image: docker.yimian.xyz/kms
+#   image: docker.yimian.xyz:4450/kms
 #   container_name: kms
 #   restart: always
 #   ports:
@@ -176,7 +176,7 @@ services:
   bingimgupdate-opt:
     #build: https://github.com/iotcat/bingUpdateImg-opt.git
     #image: iotcat/bingimgupdate-opt
-    image: docker.yimian.xyz/bingimgupdate-opt
+    image: docker.yimian.xyz:4450/bingimgupdate-opt
     container_name: bingimgupdate-opt
     restart: always
     volumes:
@@ -185,7 +185,7 @@ services:
   danmaku-api:
     #build: https://github.com/iotcat/danmaku-api.git
     #image: iotcat/danmaku-api
-    image: docker.yimian.xyz/danmaku-api
+    image: docker.yimian.xyz:4450/danmaku-api
     container_name: danmaku-api
     restart: always
     depends_on:
@@ -207,13 +207,13 @@ services:
   coro-api:
     #build: https://github.com/iotcat/coro-api.git
     #image: iotcat/coro-api
-    image: docker.yimian.xyz/coro-api
+    image: docker.yimian.xyz:4450/coro-api
     container_name: coro-api
     restart: always
   todo-ddl-api:
     #build: https://github.com/iotcat/todo-ddl-api.git
     #image: iotcat/todo-ddl-api
-    image: docker.yimian.xyz/todo-ddl-api
+    image: docker.yimian.xyz:4450/todo-ddl-api
     container_name: todo-ddl-api
     restart: always
     volumes:
@@ -221,7 +221,7 @@ services:
   upload-api:
     #build: https://github.com/IoTcat/upload-api.git
     #image: iotcat/upload-api
-    image: docker.yimian.xyz/upload-api
+    image: docker.yimian.xyz:4450/upload-api
     container_name: upload-api
     restart: always
     volumes:
@@ -232,7 +232,7 @@ services:
   mksec:
     #build: https://github.com/iotcat/sentence-generator.git
     #image: iotcat/mksec
-    image: docker.yimian.xyz/mksec
+    image: docker.yimian.xyz:4450/mksec
     container_name: mksec
     restart: always
     volumes:
