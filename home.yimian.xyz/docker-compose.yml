@@ -8,6 +8,7 @@ services:
   nginx:
     #image: iotcat/ushio-nginx
     image: docker.yimian.xyz:5000/nginx
+    #image: docker.yimian.xyz:5000/hub/nginx
     container_name: nginx
     restart: always
     ports:
