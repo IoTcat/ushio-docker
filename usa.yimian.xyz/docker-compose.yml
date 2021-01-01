@@ -93,6 +93,16 @@ services:
     command: USER=usa.yimian.xyz
     network_mode: "host"
 
+  ushio-img:
+    image: yangxuan8282/typecho
+    #image: docker.yimian.xyz/wordpress
+  # ports:
+ #    - "90:80"
+    restart: always
+    volumes:
+      - "/home/www/img/:/var/www/html/"
+
+
 
   redrange:
     image: yangxuan8282/typecho
