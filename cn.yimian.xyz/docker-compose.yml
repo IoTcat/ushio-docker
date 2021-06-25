@@ -182,6 +182,16 @@ services:
     volumes:
       - "/mnt/config/token/huaweicloud/:/mnt/config/token/huaweicloud/"
       - "/tmp/:/tmp/bingImgUpdate/"
+  wiot-webpage:
+    image: docker.yimian.xyz:4450/wiot-webpage
+    container_name: wiot-webpage
+    restart: always
+  wiot-director:
+    image: docker.yimian.xyz:4450/wiot-director
+    container_name: wiot-director
+    restart: always
+    ports:
+      - "6789:6789"
   danmaku-api:
     #build: https://github.com/iotcat/danmaku-api.git
     #image: iotcat/danmaku-api
