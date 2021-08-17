@@ -134,6 +134,29 @@ services:
       - "/mnt/config/acme.sh/:/root/.acme.sh/"
       - "/mnt/var/ssl/:/mnt/config/ssl/"
 
+  oneindex:
+#    image: iotcat/oneindex
+#    #image: docker.yimian.xyz:4450/oneindex
+#    container_name: oneindex
+#    restart: always
+#    volumes:
+#      - "/mnt/config/oneindex/:/var/www/html/config/"
+#    healthcheck:
+#      test: /bin/bash /healthcheck.sh
+#      interval: 1m
+#      timeout: 10s
+#      retries: 3
+    image: setzero/oneindex
+    container_name: oneindex
+    restart: always
+    volumes:
+      - "/mnt/config/oneindex/:/var/www/html/config/" 
+    environment:
+      - "REFRESH_TOKEN=0 * * * *"
+      - "REFRESH_CACHE=*/10 * * * *"
+
+
+
   v2ray:
     image: v2ray/official
     #image: docker.yimian.xyz/v2ray

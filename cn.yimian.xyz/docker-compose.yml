@@ -112,18 +112,6 @@ services:
 
 # common apps
 # -------------------------------------
-  oneindex:
-    #image: iotcat/oneindex
-    image: docker.yimian.xyz:4450/oneindex
-    container_name: oneindex
-    restart: always
-    volumes:
-      - "/mnt/config/oneindex/:/var/www/html/config/"
-    healthcheck:
-      test: /bin/bash /healthcheck.sh
-      interval: 1m
-      timeout: 10s
-      retries: 3
 
   session:
     #build: https://github.com/iotcat/ushio-session.git
