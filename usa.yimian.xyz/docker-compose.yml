@@ -163,18 +163,19 @@ services:
     container_name: v2ray
     restart: always
     volumes:
-      - "/mnt/config/v2ray/:/etc/v2ray/"
-      - "/var/log/v2ray/:/var/log/v2ray/"
+      - "/mnt/config/v2ray/usa.yimian.xyz/config.json:/etc/v2ray/config.json"
+      - "/var/log/v2ray/usa/:/var/log/v2ray/"
 
-  v-china2:
-    image: iotcat/v-china2
+  v-china:
+    image: v2ray/official
+    #image: iotcat/v-china2
     #image: docker.yimian.xyz/v-china2
-    container_name: v-china2
+    container_name: v-china
     restart: always
     volumes:
-      - "/mnt/config/v2ray/config.json.china2:/etc/v2ray/config.json"
-      - "/mnt/config/ajiasu/ajiasu.conf:/etc/ajiasu.conf"
-      - "/var/log/v2ray/:/var/log/v2ray/"
+      - "/mnt/config/v2ray/usa.yimian.xyz/v-china.config.json:/etc/v2ray/config.json"
+   #  - "/mnt/config/ajiasu/ajiasu.conf:/etc/ajiasu.conf"
+      - "/var/log/v2ray/v-china/:/var/log/v2ray/"
 
   ushio-proxy:
     #build: https://github.com/iotcat/ushio-proxy.git
