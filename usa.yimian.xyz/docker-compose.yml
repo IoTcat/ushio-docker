@@ -127,10 +127,12 @@ services:
     #image: docker.yimian.xyz:4450/ssl
     container_name: ssl
     restart: always
+    command: ["/bin/bash", "-c", "/acme.sh --install && tail -f /dev/null"]
     #deploy:
     #  restart_policy:
     #    delay: 86400s
     volumes:
+      - "/var/log/acme.log:/var/log/acme.log"
       - "/mnt/config/acme.sh/:/root/.acme.sh/"
       - "/mnt/var/ssl/:/mnt/config/ssl/"
 
