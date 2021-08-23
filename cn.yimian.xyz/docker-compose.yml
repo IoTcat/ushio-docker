@@ -19,7 +19,6 @@ services:
       - "/home/www/:/home/www/"
     #network_mode: "host"
     depends_on:
-      - oneindex
       - php-fpm
       - session
       - acg.watch-api
@@ -96,19 +95,6 @@ services:
     command: USER=cn.yimian.xyz
     network_mode: "host"
 
-
-  ssl:
-    #build: https://github.com/iotcat/ushio-ssl.git
-    #image: iotcat/ushio-ssl
-    image: docker.yimian.xyz:4450/ssl
-    container_name: ssl
-    restart: always
-    #deploy:
-    #  restart_policy:
-    #    delay: 86400s
-    volumes:
-      - "/mnt/config/acme.sh/:/root/.acme.sh/"
-      - "/mnt/var/ssl/:/mnt/config/ssl/"
 
 # common apps
 # -------------------------------------
