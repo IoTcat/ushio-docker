@@ -110,14 +110,6 @@ services:
       - redis_net
     volumes:
       - "/mnt/config/dbKeys/auth.js:/mnt/config/dbKeys/auth.js"
-  acg.watch-api:
-    #build: https://github.com/iotcat/acg.watch-api.git
-    #image: iotcat/acg.watch-api
-    image: docker.yimian.xyz:4450/acg.watch-api
-    container_name: acg.watch-api
-    restart: always
-    volumes:
-      - "/mnt/var/cache/acg.watch/:/mnt/cache/video/"
  
 
 
