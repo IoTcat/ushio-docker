@@ -22,7 +22,7 @@ services:
     depends_on:
       - php-fpm
       - frps
-#     - ushio-proxy
+      - ushio-proxy
     networks:
       - default
       - php_net
@@ -180,12 +180,12 @@ services:
    #  - "/mnt/config/ajiasu/ajiasu.conf:/etc/ajiasu.conf"
       - "/var/log/v2ray/v-china/:/var/log/v2ray/"
 
-# ushio-proxy:
-#   #build: https://github.com/iotcat/ushio-proxy.git
-#   image: iotcat/ushio-proxy
-#   #image: docker.yimian.xyz/proxy
-#   container_name: ushio-proxy
-#   restart: always
+  ushio-proxy:
+    #build: https://github.com/iotcat/ushio-proxy.git
+    image: iotcat/ushio-proxy
+    #image: docker.yimian.xyz/proxy
+    container_name: ushio-proxy
+    restart: always
 
 # acg.watch-api:
 #   #build: https://github.com/iotcat/acg.watch-api.git
