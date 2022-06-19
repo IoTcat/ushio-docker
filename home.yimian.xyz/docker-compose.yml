@@ -26,6 +26,7 @@ services:
       - registry
       - php-fpm
       - v2ray
+      - nextcloud
  
 
 
@@ -123,6 +124,14 @@ services:
       - registry
 
 
+  nextcloud:
+    image: nextcloud
+    container_name: nextcloud
+    restart: always
+    volumes:
+      - "/home/data/nextcloud:/var/www/html"
+    ports:
+      - "8888:80"
 
 
 # networks setting
